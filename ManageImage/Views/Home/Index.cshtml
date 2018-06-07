@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ManageImage.Models.Images>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageTitle)
+        </th>
+        <th>
+            Imagen Miniatura
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageTitle)
+        </td>
+        <td>
+            <img src="@Url.Content(item.ImagePath)" height="50" />
+        </td>
+        <td>
+            @Html.ActionLink("Editar Titulo", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Imagen Completa", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
